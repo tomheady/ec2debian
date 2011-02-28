@@ -11,4 +11,4 @@ root.tar.gz: $(FILES)
 	gzip --best root.tar
 
 clean:
-	rm root.tar.gz
+	rm -f root.tar.gz
