@@ -1,14 +1,16 @@
 
 FILES=src/root/boot/grub/menu.lst src/root/etc/fstab src/root/etc/rc.local src/root/etc/apt/sources.list src/root/etc/network/interfaces src/root/etc/ssh/sshd_config $(wildcard src/root/usr/local/bin/ec2-*)
 
+FILE_OUT=debian_config_ec2
+
 .PHONY: all clean
 
-all: root.tar.gz
+all: $(FILE_OUT).tar.gz
 
-root.tar.gz: $(FILES)
+$(FILE_OUT).tar.gz: $(FILES)
 	$(MAKE) -s clean
-	tar --create --file=root.tar src/root/
-	gzip --best root.tar
+	tar --create --file=$(FILE_OUT).tar src/root/
+	gzip --best $(FILE_OUT).tar
 
 clean:
-	rm -f root.tar.gz
+	rm -f $(FILE_OUT).tar.gz
