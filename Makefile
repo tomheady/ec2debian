@@ -1,7 +1,7 @@
 
 VERSION=1.0
 
-FILES=src/root/boot/grub/menu.lst \
+FILES=src/root/default/grub \
       src/root/etc/fstab \
       src/root/etc/rc.local \
       src/root/etc/apt/sources.list \
