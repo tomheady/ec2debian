@@ -1,7 +1,7 @@
 
 VERSION=1.02
 
-FILES=src/root/default/grub \
+FILES=src/root/etc/default/grub \
       src/root/etc/grub.d/40_custom \
       src/root/etc/fstab \
       src/root/etc/rc.local \
@@ -16,13 +16,14 @@ FILE_OUT=$(BASENAME)-$(VERSION)
 
 .PHONY: all clean
 
-all: $(FILE_OUT).tar.gz
+all: $(FILE_OUT).tar.gz $(BASENAME)-latest.tar.gz
 
 $(FILE_OUT).tar.gz: $(FILES)
-	$(MAKE) -s clean
 	tar --verbose --create --file=$(FILE_OUT).tar src/root/
 	gzip --best $(FILE_OUT).tar
-	cp $(@) debian_config_ec2-latest.tar.gz
+
+$(BASENAME)-latest.tar.gz: $(FILE_OUT).tar.gz
+	cp $(FILE_OUT).tar.gz $(@)
 
 $(FILES):
 
