@@ -2,6 +2,3 @@ deb http://security.debian.org/       squeeze/updates main contrib non-free
 deb-src http://security.debian.org/   squeeze/updates main contrib non-free
 deb http://ftp.debian.org/debian/     squeeze         main contrib non-free
 deb-src http://ftp.debian.org/debian/ squeeze         main contrib non-free
-
-# added so that we can get a working version of grub
-deb http://http.us.debian.org/debian/ unstable        main contrib non-free
